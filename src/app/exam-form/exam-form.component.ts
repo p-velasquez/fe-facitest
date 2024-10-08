@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class ExamFormComponent {
   @Output() examSubmit = new EventEmitter<void>();  // Emitir evento cuando el formulario se envíe
+  // estudiar este Output.
 
   testTitle: string = '';
   testDate: Date = new Date();
