@@ -1,0 +1,21 @@
+<form (ngSubmit)="onSubmit()">
+  <!-- Campo para la pregunta -->
+  <mat-form-field>
+    <mat-label>Pregunta</mat-label>
+    <input matInput [(ngModel)]="question" name="question" type="text" required>
+  </mat-form-field>
+
+  <!-- Campos para las alternativas -->
+  <div *ngFor="let alternative of alternatives; let i = index">
+    <mat-form-field>
+      <mat-label>Alternativa {{ i + 1 }}</mat-label>
+      <input matInput [(ngModel)]="alternative.text" name="alternative{{i}}" type="text" required>
+    </mat-form-field>
+    <mat-checkbox [(ngModel)]="alternative.isCorrect" name="isCorrect{{i}}">
+      ¿Es correcta?
+    </mat-checkbox>
+  </div>
+
+  <!-- Botón para enviar -->
+  <button mat-raised-button type="submit">Guardar Pregunta</button>
+</form>
