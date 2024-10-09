@@ -1,0 +1,7 @@
+<div>
+  <h2>Lista de Pruebas Guardadas</h2>
+  <div *ngFor="let exam of exams">
+    <h3>{{ exam.title }} - {{ exam.asignature }} - {{ exam.date | date:'shortDate' }}</h3>
+    <p><strong>Tema:</strong> {{ exam.subject }}</p>
+  </div>
+</div>

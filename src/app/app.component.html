@@ -1,6 +1,12 @@
-<h1>{{ title }}</h1>
+<!-- Formulario de examen -->
+<div *ngIf="showExamForm">
+  <app-exam-form (examSubmit)="onExamSubmit($event)"></app-exam-form>
+</div>
 
-<!-- Escuchar el evento examSubmit -->
-<app-exam-form *ngIf="showExamForm" (examSubmit)="onExamSubmit()"></app-exam-form>
+<!-- Formulario de preguntas -->
+<div *ngIf="showQuestionForm">
+  <app-question-form></app-question-form>
+</div>
 
-<app-question-form *ngIf="showQuestionForm"></app-question-form>
+<!-- Componente de la lista de pruebas guardadas -->
+<app-exam-list [exams]="savedExams"></app-exam-list>  <!-- Pasamos el array de pruebas al componente -->

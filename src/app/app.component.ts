@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';  // Importa CommonModule para *ngIf
+import { CommonModule } from '@angular/common';
 import { ExamFormComponent } from './exam-form/exam-form.component';
 import { QuestionFormComponent } from './question-form/question-form.component';
+import { ExamListComponent } from './exam-list/exam-list.component';
 
 @Component({
   selector: 'app-root',
@@ -9,21 +10,31 @@ import { QuestionFormComponent } from './question-form/question-form.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass'],
   imports: [
-    CommonModule,  // Importa CommonModule aquí
+    CommonModule,
     ExamFormComponent,
-    QuestionFormComponent
+    QuestionFormComponent,
+    ExamListComponent
   ]
 })
 export class AppComponent {
   title = 'fe-proyecto';
 
-  showExamForm: boolean = true;  // Controla si mostramos el formulario de examen
-  showQuestionForm: boolean = false;  // Controla si mostramos el formulario de preguntas
+  // Asignamos valores para poder mostrar el formulario de prueba y esconder el de preguntas.
+  showExamForm: boolean = true;
+  showQuestionForm: boolean = false;
 
-  onExamSubmit() {
-    console.log('La prueba llego con exito')
-    this.showExamForm = false;   // Oculta el formulario de examen
-    this.showQuestionForm = true;  // Muestra el formulario de preguntas
+  // Lista de pruebas creadas arrays de objetos tipo examenes.
+  savedExams: { title: string, date: Date, asignature: string, subject: string }[] = [];
+
+  // Recibe la prueba creada desde el ExamFormComponent
+  onExamSubmit(newExam: { title: string, date: Date, asignature: string, subject: string }) {
+    console.log('Nueva prueba recibida:', newExam);
+
+    // Agregar la nueva prueba al array savedExams
+    this.savedExams.push(newExam);
+
+    // Mostrar el formulario de preguntas
+    this.showExamForm = false;
+    this.showQuestionForm = true;
   }
-
 }
