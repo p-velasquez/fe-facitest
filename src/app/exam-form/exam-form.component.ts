@@ -8,6 +8,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 
+
 @Component({
   selector: 'app-exam-form',
   standalone: true,
@@ -33,21 +34,31 @@ export class ExamFormComponent {
   ExamAsignature: string = '';
   asignatures: string[] = ['Matemáticas', 'Lenguaje', 'Ciencias', 'Historia'];
   newAsignature: string = '';
+  showForm: boolean = false;
+  examSubject: string = '';
+
 
   onSubmit() {
     console.log('Formulario de examen enviado');
     console.log('Título:', this.testTitle);
     console.log('Fecha:', this.testDate);
     console.log('Asignatura:', this.ExamAsignature);
+    console.log('Tema:', this.examSubject);
 
     this.examSubmit.emit();  // Emitir el evento examSubmit cuando el formulario se envíe
+  }
+
+  onCreateAsignature(){
+    this.showForm = true;
   }
 
   addAsignature() {
     if (this.newAsignature.trim()) {
       this.asignatures.push(this.newAsignature.trim());
       this.ExamAsignature = this.newAsignature;
-      this.newAsignature = '';  // Limpiar el campo de nueva asignatura
+      this.newAsignature = '';
+      this.showForm = false;
+        // Limpiar el campo de nueva asignatura
     }
   }
 }

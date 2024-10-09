@@ -1,8 +1,19 @@
-<form (ngSubmit)="onSubmit()">
+
+
+
+
+<form class="example-form" (ngSubmit)="onSubmit()">
   <!-- Campo para la pregunta -->
+
   <mat-form-field>
     <mat-label>Pregunta</mat-label>
-    <input matInput [(ngModel)]="question" name="question" type="text" required>
+    <input matInput [(ngModel)]="nameQuest" name="question" type="text" required>
+  </mat-form-field>
+
+  <!-- Campo de texto libre. -->
+  <mat-form-field>
+    <mat-label>Información</mat-label>
+    <textarea matInput [(ngModel)]="informationQuest" name="information" type="text" ></textarea>
   </mat-form-field>
 
   <!-- Campos para las alternativas -->

@@ -14,14 +14,22 @@
     <mat-label>Seleccionar Asignatura</mat-label>
     <!-- Actualizar la funcion New a un boton fuera del Dropdown. -->
     <mat-select [(ngModel)]="ExamAsignature" name="asignature" required>
-      <mat-option [value]="'new'">Agregar nueva asignatura</mat-option>
       <mat-option *ngFor="let asignature of asignatures" [value]="asignature">{{ asignature }}</mat-option>
        <!-- Opción para agregar nueva asignatura -->
     </mat-select>
   </mat-form-field>
 
+  <!-- Tema de las pruebas. -->
+  <button mat-flat-button type="button" (click)="onCreateAsignature()">Crear Asignatura</button>
+
+  <!-- Tema de las pruebas. -->
+  <mat-form-field>
+    <mat-label>Tema (Opcional)</mat-label>
+    <input matInput [(ngModel)]="examSubject" name="subject" type="text">
+  </mat-form-field>
+
   <!-- Campo de texto para crear nueva asignatura si elige 'Agregar nueva asignatura' -->
-  <div *ngIf="ExamAsignature === 'new'">
+  <div *ngIf="showForm">
     <mat-form-field>
       <mat-label>Nueva Asignatura</mat-label>
       <input matInput [(ngModel)]="newAsignature" name="newAsignature" type="text">
@@ -29,5 +37,6 @@
     <button mat-raised-button type="button" (click)="addAsignature()">Agregar Asignatura</button>
   </div>
 
-  <button mat-raised-button type="submit">Crear Prueba</button>
+  <button mat-raised-button type="submit" [disabled]="!testTitle || !ExamAsignature">Crear Prueba</button>
+
 </form>

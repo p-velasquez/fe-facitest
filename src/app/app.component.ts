@@ -21,7 +21,7 @@ export class AppComponent {
   showQuestionForm: boolean = false;  // Controla si mostramos el formulario de preguntas
 
   onExamSubmit() {
-    console.log('Paso el submit')
+    console.log('La prueba llego con exito')
     this.showExamForm = false;   // Oculta el formulario de examen
     this.showQuestionForm = true;  // Muestra el formulario de preguntas
   }

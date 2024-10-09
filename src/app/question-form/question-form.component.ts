@@ -21,7 +21,8 @@ import { CommonModule } from '@angular/common'; // Importa CommonModule para usa
   styleUrls: ['./question-form.component.sass']
 })
 export class QuestionFormComponent {
-  question: string = ''; // Pregunta ingresada por el usuario
+  nameQuest: string = ''; // Pregunta ingresada por el usuario
+  informationQuest: string = '';
 
   // Alternativas con un texto y si son correctas o no
   alternatives: { text: string, isCorrect: boolean }[] = [
@@ -32,7 +33,8 @@ export class QuestionFormComponent {
   ];
 
   onSubmit() {
-    console.log('Pregunta:', this.question);
+    console.log('Pregunta:', this.nameQuest);
+    console.log('Información:', this.informationQuest);
     console.log('Alternativas:', this.alternatives);
   }
 }
