@@ -25,6 +25,7 @@ export class AppComponent {
 
   // Lista de pruebas creadas arrays de objetos tipo examenes.
   savedExams: { title: string, date: Date, asignature: string, subject: string }[] = [];
+  savedQuests: { nameQuest: string, informationQuest: string, alternatives: { text: string, isCorrect: boolean }[] }[] = [];
 
   // Recibe la prueba creada desde el ExamFormComponent
   onExamSubmit(newExam: { title: string, date: Date, asignature: string, subject: string }) {
@@ -32,6 +33,18 @@ export class AppComponent {
 
     // Agregar la nueva prueba al array savedExams
     this.savedExams.push(newExam);
+
+    // Mostrar el formulario de preguntas
+    this.showExamForm = false;
+    this.showQuestionForm = true;
+  }
+
+  // Recibe la prueba creada desde el ExamFormComponent
+    onQuestSubmit(newQuest: { nameQuest: string, informationQuest: string, alternatives: { text: string, isCorrect: boolean }[] }) {
+    console.log('Nueva pregunta recibida:', newQuest);
+
+    // Agregar la nueva prueba al array savedExams
+    this.savedQuests.push(newQuest);
 
     // Mostrar el formulario de preguntas
     this.showExamForm = false;

@@ -5,8 +5,9 @@
 
 <!-- Formulario de preguntas -->
 <div *ngIf="showQuestionForm">
-  <app-question-form></app-question-form>
+  <app-question-form (QuestSubmit)="onQuestSubmit($event)" ></app-question-form>
 </div>
 
 <!-- Componente de la lista de pruebas guardadas -->
-<app-exam-list [exams]="savedExams"></app-exam-list>  <!-- Pasamos el array de pruebas al componente -->
+<app-exam-list [exams]="savedExams" [quests]="savedQuests"></app-exam-list>
+  <!-- Pasamos el array de pruebas al componente -->

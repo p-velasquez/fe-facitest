@@ -1,7 +1,16 @@
-<div>
-  <h2>Lista de Pruebas Guardadas</h2>
-  <div *ngFor="let exam of exams">
-    <h3>{{ exam.title }} - {{ exam.asignature }} - {{ exam.date | date:'shortDate' }}</h3>
-    <p><strong>Tema:</strong> {{ exam.subject }}</p>
-  </div>
+<h2>Lista de Pruebas Guardadas</h2>
+<div *ngFor="let exam of exams">
+  <h3>{{ exam.title }} - {{ exam.asignature }} - {{ exam.date | date:'shortDate' }}</h3>
+  <p><strong>Tema:</strong> {{ exam.subject }}</p>
+</div>
+
+<h2>Lista de Preguntas Guardadas</h2>
+<div *ngFor="let quest of quests">
+  <h3>{{ quest.nameQuest }}</h3>
+  <p><strong>Información:</strong> {{ quest.informationQuest }}</p>
+  <ul>
+    <li *ngFor="let alternative of quest.alternatives">
+      {{ alternative.text }} (Correcta: {{ alternative.isCorrect }})
+    </li>
+  </ul>
 </div>

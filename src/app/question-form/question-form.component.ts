@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,8 +21,12 @@ import { CommonModule } from '@angular/common'; // Importa CommonModule para usa
   styleUrls: ['./question-form.component.sass']
 })
 export class QuestionFormComponent {
+
+  // Emitimos el objeto con la pregunta, información y alternativas
+  @Output() QuestSubmit = new EventEmitter<{ nameQuest: string, informationQuest: string, alternatives: { text: string, isCorrect: boolean }[] }>();
+
   nameQuest: string = ''; // Pregunta ingresada por el usuario
-  informationQuest: string = '';
+  informationQuest: string = ''; // Información adicional de la pregunta
 
   // Alternativas con un texto y si son correctas o no
   alternatives: { text: string, isCorrect: boolean }[] = [
@@ -32,9 +36,29 @@ export class QuestionFormComponent {
     { text: '', isCorrect: false }
   ];
 
+  // Método que emite el objeto al enviar el formulario
   onSubmit() {
-    console.log('Pregunta:', this.nameQuest);
-    console.log('Información:', this.informationQuest);
-    console.log('Alternativas:', this.alternatives);
+    // Emitir el objeto con la pregunta, información y alternativas
+    this.QuestSubmit.emit({
+      nameQuest: this.nameQuest,
+      informationQuest: this.informationQuest,
+      alternatives: this.alternatives
+    });
+
+    // Limpiar los campos después de enviar
+    this.clearForm();
+    console.log("paso el submit")
+  }
+
+  // Método para limpiar el formulario
+  clearForm() {
+    this.nameQuest = '';
+    this.informationQuest = '';
+    this.alternatives = [
+      { text: '', isCorrect: false },
+      { text: '', isCorrect: false },
+      { text: '', isCorrect: false },
+      { text: '', isCorrect: false }
+    ];
   }
 }

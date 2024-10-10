@@ -10,4 +10,6 @@ import { CommonModule } from '@angular/common';
 })
 export class ExamListComponent {
   @Input() exams: { title: string, date: Date, asignature: string, subject: string }[] = [];
+
+  @Input() quests: { nameQuest: string, informationQuest: string, alternatives: { text: string, isCorrect: boolean }[] }[] = [];
 }
